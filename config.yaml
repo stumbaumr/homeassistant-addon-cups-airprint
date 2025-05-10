@@ -5,9 +5,17 @@ description: A CUPS print server with working AirPrint
 arch:
   - amd64
   - aarch64
+homeassistant_api: true
 usb: true
 init: false
-homeassistant_api: true
+startup: application
+panel_icon: mdi:printer
+panel_admin: false
+boot: auto
+legacy: true
+ingress: true
+ingress_port: 631
+watchdog: http://[HOST]:[PORT:631]/
 host_network: true
 ports:
   631/tcp: 631
@@ -15,6 +23,5 @@ ports:
 ports_description:
   631/tcp: For other devices on the local network to print to this server
   631/udp: For other devices on the local network to print to this server
-# ingress: false
 map:
   - addon_config:rw
